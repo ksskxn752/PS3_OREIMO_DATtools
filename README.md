@@ -86,7 +86,7 @@ Last_filesize = fullfilesize – filedata_bag<br>
 现在一层层看，首先解开同目录下的APR_NONE0000.DAT得到了<br>
 APR_NONE0000.DAT  APR_NONE0000.DAT.GZ  APR_NONE0000.OBJ.GZ<br>
 三个文件<br>
-先看APR_NONE0000.DAT 在文件头有GPDA64BY，显然又是资源容器，其中有SE008.HCA SE028.HCA SE012.HCA等文件，可以先跳过这个文件了，看着跟我们需要的文本没什么关系<br>
+先看APR_NONE0000.DAT 在文件头有GPDA64BY，显然又是资源容器，其中有SE008.HCA SE028.HCA SE012.HCA等文件，可以先跳过这个文件了，看着跟需要的文本没什么关系<br>
 再看APR_NONE0000.DAT.GZ 跟后缀名gz一样，在文件头有1F8B的gzip标识，解压后拿到.dat的文件，同样是资源容器，但里面有大量.vol文件，每个文件的数据段只有几行二进制 <br>
 所以这文件也跟文本没什么关系<br>
 剩下最后一个APR_NONE0000.OBJ.GZ  gzip文件，解开后得到.obj文件，.obj这是3D资源文件格式直接打开会报错，那么打开文件，开头就是日期 显然不是什么3D资源文件，但是看着也不像文本，在文件尾发现APR_NONE0000.TXT 不排除这是文本编译出来的产物，先转换编码看看 ，全是NUL等二进制，这也找不到文本，在网上找一下相关信息先<br>
