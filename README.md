@@ -1,50 +1,50 @@
-学习中，主要为文件分析，实在学不明白，我在尝试修改文本后重新封包进剧情直接白屏
-有懂的大佬们能看到的话求求指点一下迷津吧
+学习中，主要为文件分析，实在学不明白，我在尝试修改文本后重新封包进剧情直接白屏<br>
+有懂的大佬们能看到的话求求指点一下迷津吧<br>
 
------文件结构-----
-PS3_GAME/
-|- PARAM		#游戏参数信息
-|- USRDIR/		#游戏资源核心目录
-	|- ENV/		#资源目录1
-	|- MOVIE/	#资源目录2
-	|- EBOOT.BIN	#主程序
-	|- RESOURCE.DAT 资源封装文件
-|- TROPDIR/	#奖杯信息
-|- LICDIR/		#游戏授权信息
-
---RESOURCE.DAT文件分析—
-Magic number:  47 50 44 41 36 34 42 59 -> GPDA64BY
-offset 0x051C
-album.dat									system_boices.dat
-character_icon.dat							title.dat
-chat.dat										tutorial_texture.dat
-cross_fade_test.dat							weekly_result.dat
-dlc.dat										effect.dat
-event.dat									event_list.dat
-extra.dat										free_view_acc_image_big.dat
-free_view_image.dat							graduate_data.dat
-loading_image.dat							main.dat
-model.dat									motion.dat
-old_image_event.dat							photo_data.dat
-photo_select.dat								pvss.dat
-script.dat									script_bg.dat
-script_character.dat							script_chat_bg.dat
-script_event.dat								script_fade.dat
-script_free.dat								script_motion_list.dat
-script_window_face.dat						skill.dat
-sns.dat										speak.dat
-stage.dat									status.dat
-status_default_bg.dat							status_frame.dat
-
----从文件头开始以8字节分开标记---
-47 50 44 41 36 34 42 59 -> magic number -> GPDA64BY
-00 00 10 83 00 00 00 00 -> (小端序)文件大小 ->83 10 00 00 -> 2198863872
-00 00 00 00 28 00 00 00 -> 文件数量 -> 40
-00 10 00 00 00 00 00 00 -> (小端序)目标文件数据的起始位置 -> 0x1000
-00 00 00 00 00 00 00 00 -> 留空
-8D 5C 01 00 00 00 00 00 -> 寻址标识
-18 05 00 00 00 00 00 00 -> (小端序)目标文件名的起始位置 -> 0x518
-
+-----文件结构-----<br>
+PS3_GAME/<br>
+|- PARAM		#游戏参数信息<br>
+|- USRDIR/		#游戏资源核心目录<br>
+	|- ENV/		#资源目录1<br>
+	|- MOVIE/	#资源目录2<br>
+	|- EBOOT.BIN	#主程序<br>
+	|- RESOURCE.DAT 资源封装文件<br>
+|- TROPDIR/	#奖杯信息<br>
+|- LICDIR/		#游戏授权信息<br>
+<br>
+--RESOURCE.DAT文件分析—<br>
+Magic number:  47 50 44 41 36 34 42 59 -> GPDA64BY<br>
+offset 0x051C<br>
+album.dat									system_boices.dat<br>
+character_icon.dat							title.dat<br>
+chat.dat										tutorial_texture.dat<br>
+cross_fade_test.dat							weekly_result.dat<br>
+dlc.dat										effect.dat<br>
+event.dat									event_list.dat<br>
+extra.dat										free_view_acc_image_big.dat<br>
+free_view_image.dat							graduate_data.dat<br>
+loading_image.dat							main.dat<br>
+model.dat									motion.dat<br>
+old_image_event.dat							photo_data.dat<br>
+photo_select.dat								pvss.dat<br>
+script.dat									script_bg.dat<br>
+script_character.dat							script_chat_bg.dat<br>
+script_event.dat								script_fade.dat<br>
+script_free.dat								script_motion_list.dat<br>
+script_window_face.dat						skill.dat<br>
+sns.dat										speak.dat<br>
+stage.dat									status.dat<br>
+status_default_bg.dat							status_frame.dat<br>
+<br>
+---从文件头开始以8字节分开标记---<br>
+47 50 44 41 36 34 42 59 -> magic number -> GPDA64BY<br>
+00 00 10 83 00 00 00 00 -> (小端序)文件大小 ->83 10 00 00 -> 2198863872<br>
+00 00 00 00 28 00 00 00 -> 文件数量 -> 40<br>
+00 10 00 00 00 00 00 00 -> (小端序)目标文件数据的起始位置 -> 0x1000<br>
+00 00 00 00 00 00 00 00 -> 留空<br>
+8D 5C 01 00 00 00 00 00 -> 寻址标识<br>
+18 05 00 00 00 00 00 00 -> (小端序)目标文件名的起始位置 -> 0x518<br>
+<br>
 文件结构:
 Struct Header{
 Uint64_t magic #文件头部魔数 8字节
